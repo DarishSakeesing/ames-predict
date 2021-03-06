@@ -1,0 +1,39 @@
+---
+title: "Ames_random_forest_analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Random Forest model analysis
+
+Purpose of this file is to bring the imputed file from python and use the variables flushed out by random forest to do analysis on the data 
+
+```{r}
+library(VIM)
+library(dplyr)
+library(mice)
+library(caret)
+library(ggplot2)
+library(Hmisc)
+library(car)
+ames_house_price_train=read.csv("./data/imputedTrainData.csv",na.strings=c("DNE"),check.names = FALSE)
+```
+
+## Lasso variables
+
+
+```{r}
+x_rf_variables = ames_house_price %>%  select('OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF','1stFlrSF', 'BsmtFinSF1', 'FullBath', 'LotArea', 'YearRemodAdd', 'YearBuilt', 'OverallCond', 'GarageYrBlt', 'BsmtFinType1', '2ndFlrSF', 'MSSubClass_30', 'Fireplaces', 'Exterior1st', 'ExterQual','Exterior2nd', 'EnclosedPorch', 'BsmtExposure', 'BldgType_1Fam','TotRmsAbvGrd', 'GarageCond', 'Foundation', 'BsmtFullBath','PavedDrive', 'ScreenPorch', 'HalfBath', 'LandContour_Lvl','Neighborhood_Edwards', 'MSZoning_C', 'Functional','Neighborhood_NWAmes', 'MSSubClass_60', 'LandContour_HLS','MSSubClass_160', 'MSSubClass_80', 'LandContour_Bnk', 'MSSubClass_90','BldgType_Twnhs', 'BldgType_TwnhsE', 'LandContour_Low', '3SsnPorch','BldgType_2FmCon', 'Neighborhood_MeadowV', 'BldgType_Duplex')
+```
+
+## Random Forest variables
+
+```{r}
+model = lm(log(ames_house_price_train$SalePrice) ~ ., data=x_rf_variables)
+summary(model)
+plot(model)
+
+```

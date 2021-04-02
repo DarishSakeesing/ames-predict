@@ -3,7 +3,7 @@ This project was created to fulfill the Machine Learning requirement at the [NYC
 found in their own repos on my github profile or by visiting my author page at 
 [NYC Datascience Blog](https://nycdatascience.com/blog/author/darish-sakeesing/).
 
-#### - https://img.shields.io/badge/release-v1.0-blue
+![release](https://img.shields.io/badge/release-v1.0-blue)
 
 ## Project Intro/Objective
 The purpose of this project is ________. (Describe the main goals of the project and potential civic impact. Limit to a short paragraph, 3-6 Sentences)
